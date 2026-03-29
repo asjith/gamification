@@ -5,7 +5,7 @@ import alert from "../icons/NotificationAlert.png";
 
 const Header = () => {
   return (
-    <div className="fixed top-0 right-0 left-47 flex justify-between items-center h-16 px-36.5 py-4">
+    <div className="fixed top-0 right-0 left-47 flex justify-between items-center h-16 bg-white px-20 py-4 md:px-36.5">
       <h2 className="font-semibold text-lg text-text h-fit">Gamification</h2>
       <div className="relative flex gap-4">
         <div className="flex justify-center items-center w-8 h-8 cursor-pointer hover:bg-bg-surface-hover hover:rounded-10">
