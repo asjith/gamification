@@ -5,12 +5,16 @@
   --font-inter: "Inter", sans-serif;
 
   --spacing-8.58: 2.145rem;
+  --spacing-10.5: 2.626rem;
+  --spacing-17.5: 4.375rem;
   --spacing-25.5: 6.375rem;
   --spacing-35: 8.75rem;
   --spacing-36.5: 9.125rem;
   --spacing-39: 9.75rem;
   --spacing-40.5: 10.125rem;
   --spacing-47: 11.75rem;
+  --spacing-50: 12.5rem;
+  --spacing-73: 18.25rem;
   --spacing-77.5: 19.375rem;
   --spacing-80.5: 20.125rem;
   --spacing-88.5: 22.125rem;
@@ -18,17 +22,21 @@
 
   --text-h1: 1.75rem;
 
+  --radius-8: 8px;
   --radius-10: 10px;
 
   --color-magenta-1: #fffdff;
   --color-magenta-2: #fff5ff;
   --color-magenta-3: #fdeffd;
+  --color-magenta-4: #fee7fe;
   --color-magenta-12: #c530c5;
   --color-magenta-15: #561056;
   --color-text: #303030;
   --color-text-secondary: #616161;
   --color-text-brand-on-bg-fill: #ffffff;
   --color-bg-surface-hover: #f7f7f7;
+
+  --background-image-pattern: url("./icons/FeatureCardBackground.png");
 }
 
 body {
