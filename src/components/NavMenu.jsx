@@ -3,7 +3,7 @@ import { NAVIGATION_MENU } from "../utils/constants";
 
 const NavMenu = ({ active, hover, handleMouseEnter, handleMouseLeave }) => {
   return (
-    <div>
+    <div className="flex flex-col gap-1">
       {NAVIGATION_MENU.map((nav) => {
         return (
           <div
