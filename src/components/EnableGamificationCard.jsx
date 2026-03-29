@@ -11,7 +11,7 @@ const EnableGamificationCard = () => {
           Enable gamification to start crafting your custom reward system.
         </p>
       </div>
-      <button className="w-77.5 h-10 bg-magenta-12 px-4 py-2 rounded-10 text-center font-inter text-base leading-[1.4] text-text-brand-on-bg-fill mt-6">
+      <button className="w-77.5 h-10 bg-magenta-12 px-4 py-2 rounded-10 text-center font-inter text-base leading-[1.4] text-text-brand-on-bg-fill mt-6 cursor-pointer hover:bg-magenta-13">
         Enable Gamification
       </button>
     </div>
