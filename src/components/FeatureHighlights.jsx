@@ -1,10 +1,13 @@
 import React from "react";
 import FeatureCard from "./FeatureCard";
+import { FEATURE_CONTENTS } from "../utils/constants";
 
 const FeatureHighlights = () => {
   return (
-    <div>
-      <FeatureCard />
+    <div className="flex flex-wrap gap-6 justify-center">
+      {FEATURE_CONTENTS.map((feature) => {
+        return <FeatureCard key={feature.key} feature={feature} />;
+      })}
     </div>
   );
 };
