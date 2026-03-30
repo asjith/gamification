@@ -60,12 +60,48 @@ export const FEATURE_CONTENTS = [
 export const MODAL_FORM_FIELDS = [
   {
     id: 1,
-    name: "Reward event",
-    placeholder: "Select an event"
+    fieldName: "Reward event",
+    placeholder: "Select an event",
+    fieldSelected: false,
+    fieldValue: "",
+    options: [
+      {
+        id: 1.1,
+        optionName: "Cross $X in sales",
+        optionSelected: false,
+        inputs: [
+          {
+            id: 1.11,
+            x: ""
+          }
+        ]
+      },
+      {
+        id: 1.2,
+        optionName: "Posts X times every Y period",
+        optionSelected: false,
+        inputs: [
+          {
+            id: 1.21,
+            x: "",
+            y: ""
+          }
+        ]
+      },
+      {
+        id: 1.3,
+        optionName: "Is Onboarded",
+        optionSelected: false,
+        inputs: []
+      }
+    ]
   },
   {
     id: 2,
-    name: "Reward with",
-    placeholder: "Select a reward"
+    fieldName: "Reward with",
+    placeholder: "Select a reward",
+    fieldSelected: false,
+    fieldValue: "",
+    options: []
   }
 ];
