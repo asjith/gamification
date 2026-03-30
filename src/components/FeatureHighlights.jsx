@@ -6,7 +6,7 @@ const FeatureHighlights = () => {
   return (
     <div className="flex flex-wrap gap-6 justify-center">
       {FEATURE_CONTENTS.map((feature) => {
-        return <FeatureCard key={feature.key} feature={feature} />;
+        return <FeatureCard key={feature.id} feature={feature} />;
       })}
     </div>
   );

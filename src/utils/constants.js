@@ -56,3 +56,16 @@ export const FEATURE_CONTENTS = [
       "Create custom incentives like flat fees, free products, or special commissions."
   }
 ];
+
+export const MODAL_FORM_FIELDS = [
+  {
+    id: 1,
+    name: "Reward event",
+    placeholder: "Select an event"
+  },
+  {
+    id: 2,
+    name: "Reward with",
+    placeholder: "Select a reward"
+  }
+];
