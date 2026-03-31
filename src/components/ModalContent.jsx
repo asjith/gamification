@@ -2,7 +2,7 @@ import React from "react";
 import ModalForm from "./ModalForm";
 import ModalControl from "./ModalControl";
 
-const ModalContent = (props) => {
+const ModalContent = () => {
   return (
     <div
       className="absolute top-41.5 left-140  bg-white rounded-12 p-6 flex flex-col gap-6 shadow-xl"
@@ -10,8 +10,8 @@ const ModalContent = (props) => {
         e.stopPropagation();
       }}
     >
-      <ModalForm {...props} />
-      <ModalControl {...props} />
+      <ModalForm />
+      <ModalControl />
     </div>
   );
 };

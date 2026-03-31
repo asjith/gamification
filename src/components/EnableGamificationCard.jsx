@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Modal from "./Modal";
+import { useDispatch } from "react-redux";
+import { openModal } from "../utils/rewardModalSlice";
 
 const EnableGamificationCard = () => {
-  const [viewModal, setViewModal] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleOpenModal = () => {
+    dispatch(openModal());
+  };
+
   return (
     <div className="w-88.5 text-center">
       <div>
@@ -16,12 +23,12 @@ const EnableGamificationCard = () => {
       <div>
         <button
           className="w-77.5 h-10 bg-magenta-12 px-4 py-2 rounded-10 text-center font-inter text-base leading-[1.4] text-text-brand-on-bg-fill mt-6 cursor-pointer hover:bg-magenta-13"
-          onClick={() => setViewModal(true)}
+          onClick={handleOpenModal}
         >
           Enable Gamification
         </button>
 
-        <Modal isOpen={viewModal} handleClose={() => setViewModal(false)} />
+        <Modal />
       </div>
     </div>
   );

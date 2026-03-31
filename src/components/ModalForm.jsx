@@ -2,15 +2,21 @@ import React from "react";
 import closeIcon from "../icons/Close.png";
 import { MODAL_FORM_FIELDS } from "../utils/constants";
 import ModalFormField from "./ModalFormField";
+import { useDispatch } from "react-redux";
+import { closeModal } from "../utils/rewardModalSlice";
 
-const ModalForm = ({ handleClose }) => {
+const ModalForm = () => {
+  const dispatch = useDispatch();
+  const handleCloseModal = () => {
+    dispatch(closeModal());
+  };
   return (
     <div className="w-88 flex flex-col gap-4 text-start">
       <div className="flex justify-between items-center">
         <h4 className="font-medium text-xl leading-[1.4] text-text">
           Create your reward system
         </h4>
-        <button className="w-6 h-6 cursor-pointer" onClick={handleClose}>
+        <button className="w-6 h-6 cursor-pointer" onClick={handleCloseModal}>
           <img src={closeIcon} />
         </button>
       </div>
