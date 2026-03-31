@@ -18,9 +18,16 @@ const rewardModalSlice = createSlice({
       state.isOpen = false;
       state.activeFieldId = null;
       state.fieldDetails = [];
+    },
+    setActiveField: (state, action) => {
+      state.activeFieldId = action.payload;
+    },
+    clearActiveField: (state) => {
+      state.activeFieldId = null;
     }
   }
 });
 
-export const { openModal, closeModal } = rewardModalSlice.actions;
+export const { openModal, closeModal, setActiveField, clearActiveField } =
+  rewardModalSlice.actions;
 export default rewardModalSlice.reducer;

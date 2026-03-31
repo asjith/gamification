@@ -1,8 +1,22 @@
 import React, { useState } from "react";
 import arrow from "../icons/Arrows.png";
+import { useDispatch, useSelector } from "react-redux";
+import { clearActiveField, setActiveField } from "../utils/rewardModalSlice";
 
 const ModalFormField = ({ field }) => {
-  const [isSelected, setIsSelected] = useState(false);
+  const dispatch = useDispatch();
+  const activeFieldId = useSelector((store) => store.rewardModal.activeFieldId);
+
+  const handleOpenField = (e, fieldId) => {
+    if (activeFieldId && activeFieldId === fieldId) {
+      dispatch(clearActiveField());
+    } else {
+      dispatch(setActiveField(fieldId));
+    }
+  };
+
+  const isSelected = activeFieldId === field.id;
+
   return (
     <div className="relative flex flex-col gap-2">
       <p className="font-normal text-sm leading-[1.4] text-text-secondary">
@@ -11,7 +25,7 @@ const ModalFormField = ({ field }) => {
       <button
         className={`h-10 p-2.5 rounded-8 border cursor-pointer flex items-center justify-between  ${isSelected ? "border-2 border-magenta-12 " : " border-border hover:border-border-hover"}`}
         type="button"
-        onClick={() => setIsSelected(!isSelected)}
+        onClick={(e) => handleOpenField(e, field.id)}
       >
         <span className="font-inter font-normal text-base leading-[1.4] text-text-disabled">
           {field.placeholder}
