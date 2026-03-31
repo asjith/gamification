@@ -2,14 +2,17 @@ import React from "react";
 import closeIcon from "../icons/Close.png";
 import { MODAL_FORM_FIELDS } from "../utils/constants";
 import ModalFormField from "./ModalFormField";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeModal } from "../utils/rewardModalSlice";
 
 const ModalForm = () => {
+  const { fieldDetails } = useSelector((store) => store.rewardModal);
   const dispatch = useDispatch();
+
   const handleCloseModal = () => {
     dispatch(closeModal());
   };
+
   return (
     <div className="w-88 flex flex-col gap-4 text-start">
       <div className="flex justify-between items-center">
@@ -24,7 +27,7 @@ const ModalForm = () => {
         className="flex flex-col gap-4"
         onSubmit={(e) => e.preventDefault()}
       >
-        {MODAL_FORM_FIELDS.map((field) => {
+        {fieldDetails.map((field) => {
           return <ModalFormField key={field.id} field={field} />;
         })}
         <div>
