@@ -77,7 +77,10 @@ export const MODAL_FORM_FIELDS = [
         optionName: "Posts X times every Y period",
         displayTemplate: "${x} times every ${y} period",
         optionSelected: false,
-        inputs: [{ id: 1.21, x: "", y: "" }]
+        inputs: [
+          { id: 1.21, x: "" },
+          { id: 1.22, y: "" }
+        ]
       },
       {
         id: 1.3,
@@ -97,3 +100,9 @@ export const MODAL_FORM_FIELDS = [
     options: []
   }
 ];
+
+export const SAVE_BTN_STATUS = {
+  DISABLE: "disable",
+  ENABLE: "enable",
+  ACTION: "action"
+};

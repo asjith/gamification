@@ -10,16 +10,8 @@ const ModalControl = () => {
   };
   return (
     <div className="flex gap-4 h-10">
-      <ModalButton
-        content="Cancel"
-        btnStyle="border border-border"
-        contentStyle="text-text"
-      />
-      <ModalButton
-        content="Create Reward"
-        btnStyle="bg-magenta-10"
-        contentStyle="text-white"
-      />
+      <ModalButton content="Cancel" role="cancel" enable={true} />
+      <ModalButton content="Create Reward" role="action" enable={false} />
     </div>
   );
 };

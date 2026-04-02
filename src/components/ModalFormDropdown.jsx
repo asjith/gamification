@@ -1,34 +1,36 @@
 import React, { useState } from "react";
 import ModalFormDropdownOption from "./ModalFormDropdownOption";
 import ModalButton from "./ModalButton";
+import { useDispatch, useSelector } from "react-redux";
+import { updateSaveBtnStatus } from "../utils/rewardModalSlice";
+import { SAVE_BTN_STATUS } from "../utils/constants";
 
 const ModalFormDropdown = ({ field }) => {
-  const [selectedOption, setSelectedOption] = useState(null);
+  const saveBtnStatus = useSelector((store) => store.rewardModal.saveBtnStatus);
+  const selectedOption = useSelector(
+    (store) => store.rewardModal.activeOptionId
+  );
+  const dispatch = useDispatch();
+
+  const handleSave = () => {
+    dispatch(updateSaveBtnStatus(SAVE_BTN_STATUS.ACTION));
+  };
+
   return (
     <div className="absolute z-10 top-full flex flex-col gap-2 bg-white p-1 rounded-8 border border-border shadow-md w-full animate-fade-in">
       <ul>
         {field?.options.map((option) => {
-          return (
-            <ModalFormDropdownOption
-              key={option.id}
-              option={option}
-              selectedOption={selectedOption}
-              setSelectedOption={setSelectedOption}
-            />
-          );
+          return <ModalFormDropdownOption key={option.id} option={option} />;
         })}
       </ul>
       {selectedOption && (
         <div className="flex gap-2 h-10">
-          <ModalButton
-            content="Cancel"
-            btnStyle="border border-border"
-            contentStyle="text-text"
-          />
+          <ModalButton content="Cancel" role="cancel" enable={true} />
           <ModalButton
             content="Save"
-            btnStyle="bg-magenta-10"
-            contentStyle="text-white"
+            role="action"
+            enable={saveBtnStatus === SAVE_BTN_STATUS.ENABLE}
+            handleClick={handleSave}
           />
         </div>
       )}
