@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import arrow from "../icons/Arrows.png";
 import { useDispatch, useSelector } from "react-redux";
 import { clearActiveField, setActiveField } from "../utils/rewardModalSlice";
+import ModalFormDropdown from "./ModalFormDropdown";
 
 const ModalFormField = ({ field }) => {
   const dispatch = useDispatch();
@@ -35,22 +36,7 @@ const ModalFormField = ({ field }) => {
           src={arrow}
         ></img>
       </button>
-      {isSelected && (
-        <div className="absolute z-10 top-full bg-white p-1 rounded-8 border border-border shadow-md w-full animate-fade-in">
-          <ul>
-            {field?.options.map((option) => {
-              return (
-                <li
-                  key={option.id}
-                  className="h-10 p-2 rounded-8 text-text cursor-pointer hover:bg-bg-surface-hover transition-colors duration-100 ease-out"
-                >
-                  {option.optionName}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      )}
+      {isSelected && <ModalFormDropdown field={field} />}
     </div>
   );
 };
