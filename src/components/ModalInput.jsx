@@ -24,18 +24,9 @@ const ModalInput = ({ inputDetail }) => {
   useEffect(() => {
     if (saveBtnStatus !== SAVE_BTN_STATUS.ACTION) return;
     const newInputDetail = { ...inputDetail };
-    for (let key in newInputDetail) {
-      if (key !== "id") {
-        newInputDetail[key] = input;
-      }
-    }
+    newInputDetail.value = input;
 
-    dispatch(
-      updateFieldDetails({
-        updateInputIndex: inputDetail.id,
-        input: newInputDetail
-      })
-    );
+    dispatch(updateFieldDetails(newInputDetail));
   }, [saveBtnStatus]);
 
   const handleChange = (e) => {

@@ -37,7 +37,7 @@ const rewardModalSlice = createSlice({
       state.saveBtnStatus = action.payload;
     },
     updateFieldDetails: (state, action) => {
-      const { updateInputIndex, input } = action.payload;
+      const newInput = action.payload;
       const fieldIndex = state.fieldDetails.findIndex(
         (field) => field.id === state.activeFieldId
       );
@@ -46,10 +46,10 @@ const rewardModalSlice = createSlice({
       );
       const inputIndex = state.fieldDetails[fieldIndex].options[
         optionIndex
-      ].inputs.findIndex((input) => input.id === updateInputIndex);
+      ].inputs.findIndex((input) => input.id === newInput.id);
 
       state.fieldDetails[fieldIndex].options[optionIndex].inputs[inputIndex] = {
-        ...input
+        ...newInput
       };
     }
   }
