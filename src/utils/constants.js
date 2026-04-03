@@ -68,14 +68,14 @@ export const MODAL_FORM_FIELDS = [
       {
         id: 1.1,
         optionName: "Cross $X in sales",
-        displayTemplate: "Cross $${x} in sales",
+        displayTemplate: "Cross ${x} in sales",
         optionSelected: false,
         inputs: [{ id: 1.11, key: "x", value: "" }]
       },
       {
         id: 1.2,
         optionName: "Posts X times every Y period",
-        displayTemplate: "${x} times every ${y} period",
+        displayTemplate: "{x} times every {y} period",
         optionSelected: false,
         inputs: [
           { id: 1.21, key: "x", value: "" },

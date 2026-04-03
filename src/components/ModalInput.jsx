@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  clearActiveField,
-  clearActiveOption,
   updateFieldDetails,
   updateSaveBtnStatus
 } from "../utils/rewardModalSlice";
@@ -29,9 +27,6 @@ const ModalInput = ({ inputDetail }) => {
     newInputDetail.value = input;
 
     dispatch(updateFieldDetails(newInputDetail));
-    dispatch(updateSaveBtnStatus(SAVE_BTN_STATUS.DISABLE));
-    dispatch(clearActiveOption());
-    dispatch(clearActiveField());
   }, [saveBtnStatus]);
 
   const handleChange = (e) => {

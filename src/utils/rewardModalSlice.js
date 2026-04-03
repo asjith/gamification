@@ -51,6 +51,11 @@ const rewardModalSlice = createSlice({
       state.fieldDetails[fieldIndex].options[optionIndex].inputs[inputIndex] = {
         ...newInput
       };
+
+      //reset
+      state.activeFieldId = null;
+      state.activeOptionId = null;
+      state.saveBtnStatus = SAVE_BTN_STATUS.DISABLE;
     }
   }
 });
