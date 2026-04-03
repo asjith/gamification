@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  clearActiveField,
+  clearActiveOption,
   updateFieldDetails,
   updateSaveBtnStatus
 } from "../utils/rewardModalSlice";
@@ -8,7 +10,7 @@ import { SAVE_BTN_STATUS } from "../utils/constants";
 
 const ModalInput = ({ inputDetail }) => {
   const [input, setInput] = useState("");
-  const saveBtnStatus = useSelector((store) => store.rewardModal.saveBtnStatus);
+  const { saveBtnStatus } = useSelector((store) => store.rewardModal);
 
   const dispatch = useDispatch();
 
@@ -27,6 +29,9 @@ const ModalInput = ({ inputDetail }) => {
     newInputDetail.value = input;
 
     dispatch(updateFieldDetails(newInputDetail));
+    dispatch(updateSaveBtnStatus(SAVE_BTN_STATUS.DISABLE));
+    dispatch(clearActiveOption());
+    dispatch(clearActiveField());
   }, [saveBtnStatus]);
 
   const handleChange = (e) => {
