@@ -8,6 +8,7 @@ const ModalButton = ({ content, role, enable, handleClick = () => {} }) => {
     <button
       className={`flex-1 px-4 py-2 rounded-10 flex justify-center items-center cursor-pointer ${btnStyle}`}
       type="button"
+      disabled={!enable}
       onClick={handleClick}
     >
       <span

@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
-  updateFieldDetails,
+  updateOptionInput,
   updateSaveBtnStatus
 } from "../utils/rewardModalSlice";
 import { SAVE_BTN_STATUS } from "../utils/constants";
 
 const ModalInput = ({ inputDetail }) => {
   const [input, setInput] = useState("");
-  const { saveBtnStatus } = useSelector((store) => store.rewardModal);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -21,16 +19,13 @@ const ModalInput = ({ inputDetail }) => {
     };
   }, [input]);
 
-  useEffect(() => {
-    if (saveBtnStatus !== SAVE_BTN_STATUS.ACTION) return;
-    const newInputDetail = { ...inputDetail };
-    newInputDetail.value = input;
-
-    dispatch(updateFieldDetails(newInputDetail));
-  }, [saveBtnStatus]);
-
   const handleChange = (e) => {
     setInput(e.target.value);
+  };
+
+  const handleBlur = () => {
+    const newInput = { ...inputDetail, value: input };
+    dispatch(updateOptionInput(newInput));
   };
 
   return (
@@ -43,6 +38,7 @@ const ModalInput = ({ inputDetail }) => {
         placeholder="e.g. 100"
         value={input}
         onChange={handleChange}
+        onBlur={handleBlur}
       />
     </div>
   );

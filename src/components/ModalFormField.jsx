@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import arrow from "../icons/Arrows.png";
 import { useDispatch, useSelector } from "react-redux";
 import { clearActiveField, setActiveField } from "../utils/rewardModalSlice";
@@ -28,8 +28,10 @@ const ModalFormField = ({ field }) => {
         type="button"
         onClick={(e) => handleOpenField(e, field.id)}
       >
-        <span className="font-inter font-normal text-base leading-[1.4] text-text-disabled">
-          {field.placeholder}
+        <span
+          className={`font-inter font-normal text-base leading-[1.4] ${field.fieldValue === "" ? "text-text-disabled" : "text-text"} `}
+        >
+          {field.fieldValue === "" ? field.placeholder : field.fieldValue}
         </span>
         <img
           className={`w-6 h-6 transition-transform duration-300 ease-out ${isSelected ? "scale-y-[-1]" : ""}`}

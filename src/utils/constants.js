@@ -103,6 +103,5 @@ export const MODAL_FORM_FIELDS = [
 
 export const SAVE_BTN_STATUS = {
   DISABLE: "disable",
-  ENABLE: "enable",
-  ACTION: "action"
+  ENABLE: "enable"
 };

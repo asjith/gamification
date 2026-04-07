@@ -1,8 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import ModalFormDropdownOption from "./ModalFormDropdownOption";
 import ModalButton from "./ModalButton";
 import { useDispatch, useSelector } from "react-redux";
-import { updateSaveBtnStatus } from "../utils/rewardModalSlice";
+import {
+  clearActiveField,
+  clearActiveOption,
+  setFieldValue,
+  updateSaveBtnStatus
+} from "../utils/rewardModalSlice";
 import { SAVE_BTN_STATUS } from "../utils/constants";
 
 const ModalFormDropdown = ({ field }) => {
@@ -13,7 +18,18 @@ const ModalFormDropdown = ({ field }) => {
   const dispatch = useDispatch();
 
   const handleSave = () => {
-    dispatch(updateSaveBtnStatus(SAVE_BTN_STATUS.ACTION));
+    dispatch(setFieldValue());
+    reset();
+  };
+
+  const handleCancel = () => {
+    reset();
+  };
+
+  const reset = () => {
+    dispatch(clearActiveField());
+    dispatch(clearActiveOption());
+    dispatch(updateSaveBtnStatus(SAVE_BTN_STATUS.DISABLE));
   };
 
   return (
@@ -25,7 +41,12 @@ const ModalFormDropdown = ({ field }) => {
       </ul>
       {selectedOption && (
         <div className="flex gap-2 h-10">
-          <ModalButton content="Cancel" role="cancel" enable={true} />
+          <ModalButton
+            content="Cancel"
+            role="cancel"
+            enable={true}
+            handleClick={handleCancel}
+          />
           <ModalButton
             content="Save"
             role="action"

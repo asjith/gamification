@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { MODAL_FORM_FIELDS, SAVE_BTN_STATUS } from "./constants";
+import { findIndex } from "./helperFunctions";
 
 const rewardModalSlice = createSlice({
   name: "rewardModal",
@@ -36,14 +37,10 @@ const rewardModalSlice = createSlice({
     updateSaveBtnStatus: (state, action) => {
       state.saveBtnStatus = action.payload;
     },
-    updateFieldDetails: (state, action) => {
+    updateOptionInput: (state, action) => {
       const newInput = action.payload;
-      const fieldIndex = state.fieldDetails.findIndex(
-        (field) => field.id === state.activeFieldId
-      );
-      const optionIndex = state.fieldDetails[fieldIndex].options.findIndex(
-        (option) => option.id === state.activeOptionId
-      );
+      const [fieldIndex, optionIndex] = findIndex(state);
+
       const inputIndex = state.fieldDetails[fieldIndex].options[
         optionIndex
       ].inputs.findIndex((input) => input.id === newInput.id);
@@ -51,11 +48,18 @@ const rewardModalSlice = createSlice({
       state.fieldDetails[fieldIndex].options[optionIndex].inputs[inputIndex] = {
         ...newInput
       };
+    },
+    setFieldValue: (state) => {
+      const [fieldIndex, optionIndex] = findIndex(state);
+      const option = state.fieldDetails[fieldIndex].options[optionIndex];
+      const template = option.displayTemplate;
+      let index = 0;
 
-      //reset
-      state.activeFieldId = null;
-      state.activeOptionId = null;
-      state.saveBtnStatus = SAVE_BTN_STATUS.DISABLE;
+      const updatedTemplate = template.replace(
+        /\{[^}]+\}/g,
+        () => option.inputs[index++].value
+      );
+      state.fieldDetails[fieldIndex].fieldValue = updatedTemplate;
     }
   }
 });
@@ -68,6 +72,7 @@ export const {
   setActiveOption,
   clearActiveOption,
   updateSaveBtnStatus,
-  updateFieldDetails
+  updateOptionInput,
+  setFieldValue
 } = rewardModalSlice.actions;
 export default rewardModalSlice.reducer;
